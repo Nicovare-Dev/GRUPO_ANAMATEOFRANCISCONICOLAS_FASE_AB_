@@ -13,12 +13,12 @@ public class Main {
 
         // Crear un escuadrón con un par de drones
         Escuadron escuadron = new Escuadron();
-        escuadron.agregarDron(new Dron());
-        escuadron.agregarDron(new Dron());
+        escuadron.agregarDron(new Dron(100f, 2f, 150f, 1000f, 5000f));
+        escuadron.agregarDron(new Dron(100f, 2f, 150f, 1000f, 5000f));
 
         // Crear un misil y comprobar si debe detonar
-        Misil misil = new Misil();
-        misil.descender();
+        Misil misil = new Misil(5000f, 50f);
+        misil.mover();
         boolean detona = misil.debeDetonar();
 
         // Armar el juego y avanzar de nivel
