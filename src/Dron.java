@@ -1,9 +1,13 @@
 public class Dron extends EntidadVoladora {
+    private static final float UMBRAL_DISPARO = 10f; // cuanta "frecuencia" acumulada hace falta para disparar
+
     private float altitud;
     private float frecuenciaDisparo;
     private float velocidadMisiles;
     private boolean activo;
     private Direccion direccion;
+    private float anchoPantalla;
+    private float acumuladorDisparo;
 
     public Dron(float velocidad, float frecuenciaDisparo, float velocidadMisiles, float anchoPantalla, float altitud) {
         this.velocidad         = velocidad;
@@ -11,6 +15,8 @@ public class Dron extends EntidadVoladora {
         this.velocidadMisiles  = velocidadMisiles;
         this.activo            = true;
         this.altitud           = altitud;
+        this.anchoPantalla     = anchoPantalla;
+        this.acumuladorDisparo = 0f;
         if (Math.random() < 0.5) {
             this.posicion  = 0f;
             this.direccion = Direccion.DERECHA;
@@ -30,8 +36,27 @@ public class Dron extends EntidadVoladora {
 
     }
 
+    public boolean recorridoCompleto() {
+        // El dron termino su recorrido cuando llego al extremo opuesto al que arranco
+        if (direccion == Direccion.DERECHA) {
+            return posicion >= anchoPantalla;
+        } else {
+            return posicion <= 0f;
+        }
+    }
+
+    public boolean debeDispararMisil() {
+        // A mayor frecuencia (sube 15% por nivel), antes se alcanza el umbral y mas seguido dispara
+        acumuladorDisparo += frecuenciaDisparo;
+        if (acumuladorDisparo >= UMBRAL_DISPARO) {
+            acumuladorDisparo -= UMBRAL_DISPARO;
+            return true;
+        }
+        return false;
+    }
+
     public Misil dispararMisil() {
-        return new Misil(altitud, velocidadMisiles);
+        return new Misil(altitud, velocidadMisiles, posicion);
     }
 
     public void desactivar()           { activo = false; }

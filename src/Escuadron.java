@@ -5,38 +5,29 @@ public class Escuadron {
     private static final int MAXIMOS_ACTIVOS = 4;
     private static final int TOTAL_DRONES = 10;
 
-    private List<Dron> drones = new ArrayList<>();
-    private int indiceDron = 0;
+    private List<Dron> dronesActivos = new ArrayList<>();
+    private int dronesLanzados = 0;
 
-    public void agregarDron(Dron dron) {
-        drones.add(dron);
+    public boolean puedeLanzarSiguienteDron() {
+        // No mas de 4 simultaneos y mientras queden drones del escuadron por enviar
+        return dronesActivos.size() < MAXIMOS_ACTIVOS && dronesLanzados < TOTAL_DRONES;
+    }
+
+    public void lanzarDron(Dron dron) {
+        dronesActivos.add(dron);
+        dronesLanzados++;
     }
 
     public List<Dron> getDronesActivos() {
-        List<Dron> activos = new ArrayList<>();
-        for (Dron dron : drones) {
-            if (dron.estaActivo()) {
-                activos.add(dron);
-            }
-        }
-        return activos;
+        return dronesActivos;
     }
 
-    public boolean puedeLanzarSiguienteDron() {
-        return getDronesActivos().size() < MAXIMOS_ACTIVOS && hayDronesDisponibles();
-    }
-
-    public void lanzarSiguiente() {
-        if (hayDronesDisponibles()) {
-            indiceDron++;
-        }
-    }
-
-    public boolean hayDronesDisponibles() {
-        return indiceDron < drones.size();
+    public void removerDronesInactivos() {
+        dronesActivos.removeIf(dron -> !dron.estaActivo());
     }
 
     public boolean escuadronTerminado() {
-        return indiceDron >= TOTAL_DRONES && getDronesActivos().isEmpty();
+        // Se enviaron los 10 drones y ninguno sigue en vuelo
+        return dronesLanzados >= TOTAL_DRONES && dronesActivos.isEmpty();
     }
 }

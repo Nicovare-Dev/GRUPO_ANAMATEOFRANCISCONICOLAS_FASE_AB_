@@ -11,13 +11,13 @@ public class Main {
         avion.mover(Direccion.DERECHA);
         avion.cambiarAltitud(250f);
 
-        // Crear un escuadrón con un par de drones
+        // Crear un escuadrón y lanzarle un par de drones (máx. 4 en vuelo)
         Escuadron escuadron = new Escuadron();
-        escuadron.agregarDron(new Dron(100f, 2f, 150f, 1000f, 5000f));
-        escuadron.agregarDron(new Dron(100f, 2f, 150f, 1000f, 5000f));
+        escuadron.lanzarDron(new Dron(100f, 2f, 150f, 1000f, 5000f));
+        escuadron.lanzarDron(new Dron(100f, 2f, 150f, 1000f, 5000f));
 
         // Crear un misil y comprobar si debe detonar
-        Misil misil = new Misil(5000f, 50f);
+        Misil misil = new Misil(5000f, 50f, 0f);
         misil.mover();
         boolean detona = misil.debeDetonar();
 
