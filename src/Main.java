@@ -22,7 +22,7 @@ public class Main {
         boolean detona = misil.debeDetonar();
 
         // Armar el juego y avanzar de nivel
-        Juego juego = new Juego();
+        Juego juego = new Juego(1000f);
         juego.avanzarNivel();
 
         System.out.println("Drones activos: " + juego.dronesActivos());

@@ -29,7 +29,7 @@ public class Jugador {
 
     public void sumarPuntos(int pts) {
         this.puntos += pts;
-        if (this.puntos - puntosUltimaVidaExtra >= PUNTOS_VIDA_EXTRA) {
+        while (this.puntos - puntosUltimaVidaExtra >= PUNTOS_VIDA_EXTRA) {
             ganarVidaExtra();
             puntosUltimaVidaExtra += PUNTOS_VIDA_EXTRA;
         }

@@ -2,19 +2,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Juego {
-    private static final int BONUS_NIVEL = 300;
+    private static final int   BONUS_NIVEL    = 300;
+    private static final float ALTITUD_DRONES = 5000f;
 
     private Nivel nivel;
     private Jugador jugador;
     private Avion avion;
-    private List<Escuadron> escuadrones = new ArrayList<>();
-    private List<Misil> misiles = new ArrayList<>();
+    private Escuadron escuadron;
+    private List<Misil> misiles;
+    private float anchoPantalla;
 
-    public Juego(){
-        this.nivel = new Nivel();
-        this.jugador = new Jugador();
-        this.avion = new Avion();
-
+    public Juego(float anchoPantalla) {
+        this.anchoPantalla = anchoPantalla;
+        this.nivel         = new Nivel();
+        this.jugador       = new Jugador();
+        this.avion         = new Avion();
+        this.misiles       = new ArrayList<>();
+        this.escuadron     = new Escuadron();
     }
 
     public void avanzarNivel() {
@@ -27,12 +31,10 @@ public class Juego {
     public Avion getAvion()     { return avion; }
 
     public int dronesActivos() {
-        // Contar la cant de drones activos en el juego
-        return 0;
+        return escuadron.getDronesActivos().size();
     }
 
     public boolean finDelJuego() {
-        // Determinar si el juego ha terminado
-        return false;
+        return !jugador.estaVivo();
     }
 }
