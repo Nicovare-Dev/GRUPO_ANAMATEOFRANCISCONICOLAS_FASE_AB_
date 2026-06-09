@@ -13,7 +13,7 @@
 
 ## Falta implementar
 - [ ] Tests - verificar la lógica del negocio
-- [ ] update() - tick del juego (mover drones, disparar misiles, explosiones) → Fase Final
+- [ ] update() - (mover drones, disparar misiles, explosiones) → Fase Final
 
 ## Fase Final (26/06)
 - [ ] update() con delta (0.05f) en Avion, Dron y Misil
