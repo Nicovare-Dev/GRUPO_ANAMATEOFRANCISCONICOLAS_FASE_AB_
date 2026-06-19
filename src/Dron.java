@@ -1,7 +1,6 @@
 public class Dron extends EntidadVoladora {
     private static final float UMBRAL_DISPARO = 10f; // cuanta "frecuencia" acumulada hace falta para disparar
 
-    private float altitud;
     private float frecuenciaDisparo;
     private float velocidadMisiles;
     private boolean activo;
@@ -10,11 +9,10 @@ public class Dron extends EntidadVoladora {
     private float acumuladorDisparo;
 
     public Dron(float velocidad, float frecuenciaDisparo, float velocidadMisiles, float anchoPantalla, float altitud) {
-        this.velocidad         = velocidad;
+        super(0f, velocidad, altitud);
         this.frecuenciaDisparo = frecuenciaDisparo;
         this.velocidadMisiles  = velocidadMisiles;
         this.activo            = true;
-        this.altitud           = altitud;
         this.anchoPantalla     = anchoPantalla;
         this.acumuladorDisparo = 0f;
         if (Math.random() < 0.5) {
@@ -61,6 +59,5 @@ public class Dron extends EntidadVoladora {
 
     public void desactivar()           { activo = false; }
     public boolean estaActivo()        { return activo; }
-    public float getPosicion()         { return posicion; }
     public float getFrecuenciaDisparo(){ return frecuenciaDisparo; }
 }

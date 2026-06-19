@@ -1,23 +1,19 @@
 public class Misil extends EntidadVoladora {
-    private float altitudActual;
     private float altitudDetonacion;
-    private float velocidadCaida;
 
     public Misil(float altitudInicial, float velocidadCaida, float posicion) {
-        this.altitudActual     = altitudInicial;
-        this.velocidadCaida    = velocidadCaida;
-        this.posicion          = posicion; // posicion horizontal del dron que lo lanzo (cae en linea recta)
+        super(posicion, velocidadCaida, altitudInicial); // posicion horizontal del dron que lo lanzo (cae en linea recta)
         this.altitudDetonacion = 1200f + (float)(Math.random() * (4500f - 1200f));
     }
 
     @Override
     public void mover() {
-        this.altitudActual -= this.velocidadCaida;
+        this.altitud -= this.velocidad;
     }
 
 
     public boolean debeDetonar() {
-        return altitudActual <= altitudDetonacion;
+        return altitud <= altitudDetonacion;
     }
 
     public Explosion explotar() {
@@ -40,6 +36,4 @@ public class Misil extends EntidadVoladora {
             jugador.perderVida();
         }
     }
-
-    public float getAltitudActual() { return altitudActual; }
 }

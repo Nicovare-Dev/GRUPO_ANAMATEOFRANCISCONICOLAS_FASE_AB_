@@ -5,9 +5,14 @@ public class Controlador {
         juego = new Juego(1000f);
     }
 
+    public void update()                    { juego.update(); }
     public void moverAvion(Direccion dir)   { juego.getAvion().mover(dir); }
     public void cambiarAltitud(float alt)   { juego.getAvion().cambiarAltitud(alt); }
     public void avanzarNivel()              { juego.avanzarNivel(); }
+
+    public float getAvionPosicion() { return juego.getAvion().getPosicion(); }
+    public float getAvionAltitud()  { return juego.getAvion().getAltitud(); }
+    public float getAnchoPantalla() { return juego.getAnchoPantalla(); }
 
     public int getPuntos()        { return juego.getJugador().getPuntos(); }
     public int getVidas()         { return juego.getJugador().getVidas(); }

@@ -13,8 +13,13 @@
 
 ## Falta implementar
 - [ ] Tests - verificar la lógica del negocio
-- [ ] update() - (mover drones, disparar misiles, explosiones) → Fase Final
 
 ## Fase Final (26/06)
-- [ ] update() con delta (0.05f) en Avion, Dron y Misil
-- [ ] Interfaz gráfica
+- [x] update() en Juego (mover drones, disparar misiles, explosiones, spawn, subir nivel)
+- [x] update() en Controlador (pasamanos para el game loop)
+- [x] Interfaz gráfica - ventana + pantalla de inicio (SKYDEFENSE + boton)
+- [x] Interfaz gráfica - HUD (vidas, energia, nivel)
+- [ ] Interfaz gráfica - dibujar avion, drones y misiles en el panel
+- [ ] Interfaz gráfica - control por teclado (mover el avion)
+- [ ] Interfaz gráfica - game loop (Timer: controlador.update() + repaint())
+- [ ] Interfaz gráfica - (opcional) explosiones y pantalla de game over

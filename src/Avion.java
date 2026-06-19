@@ -3,11 +3,8 @@ public class Avion extends EntidadVoladora {
     private static final float ALTITUD_MAX  = 5000f;
     private static final float VELOCIDAD    = 50f;
 
-    private float altitud;
-
     public Avion() {
-        this.posicion = 0f;
-        this.altitud  = ALTITUD_MIN;
+        super(0f, VELOCIDAD, ALTITUD_MIN);
     }
 
     @Override
@@ -30,7 +27,4 @@ public class Avion extends EntidadVoladora {
             this.altitud = alt;
         }
     }
-
-    public float getAltitud()  { return altitud; }
-    public float getPosicion() { return posicion; }
 }

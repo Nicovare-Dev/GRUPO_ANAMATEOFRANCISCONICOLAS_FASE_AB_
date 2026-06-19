@@ -6,12 +6,12 @@ public class Main {
         jugador.perderVida();
         jugador.ganarVidaExtra();
 
-        // Crear el avión del jugador y moverlo
+        // Crear el avion del jugador y moverlo
         Avion avion = new Avion();
         avion.mover(Direccion.DERECHA);
         avion.cambiarAltitud(250f);
 
-        // Crear un escuadrón y lanzarle un par de drones (máx. 4 en vuelo)
+        // Crear un escuadrón y lanzarle un par de drones (maxx. 4 en vuelo)
         Escuadron escuadron = new Escuadron();
         escuadron.lanzarDron(new Dron(100f, 2f, 150f, 1000f, 5000f));
         escuadron.lanzarDron(new Dron(100f, 2f, 150f, 1000f, 5000f));
