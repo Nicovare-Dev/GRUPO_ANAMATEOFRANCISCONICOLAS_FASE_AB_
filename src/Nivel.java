@@ -1,7 +1,9 @@
 public class Nivel {
-    private static final float VELOCIDAD_DRONES_BASE    = 100f;
-    private static final float VELOCIDAD_MISILES_BASE   = 150f;
-    private static final float FRECUENCIA_DISPARO_BASE  = 2f;
+    // Valores base por frame, calibrados para que el juego sea jugable.
+    // El +15% por nivel se aplica sobre estos.
+    private static final float VELOCIDAD_DRONES_BASE    = 5f;
+    private static final float VELOCIDAD_MISILES_BASE   = 40f;
+    private static final float FRECUENCIA_DISPARO_BASE  = 0.15f;
     private static final float INCREMENTO               = 1.15f;
 
     private int numero;

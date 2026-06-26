@@ -1,5 +1,5 @@
 public class Dron extends EntidadVoladora {
-    private static final float UMBRAL_DISPARO = 10f; // cuanta "frecuencia" acumulada hace falta para disparar
+    private static final float UMBRAL_DISPARO = 10f; // frecuencia acumulada para disparar
 
     private float frecuenciaDisparo;
     private float velocidadMisiles;
@@ -35,7 +35,7 @@ public class Dron extends EntidadVoladora {
     }
 
     public boolean recorridoCompleto() {
-        // El dron termino su recorrido cuando llego al extremo opuesto al que arranco
+        // Llego al extremo opuesto al que arranco
         if (direccion == Direccion.DERECHA) {
             return posicion >= anchoPantalla;
         } else {
@@ -44,7 +44,7 @@ public class Dron extends EntidadVoladora {
     }
 
     public boolean debeDispararMisil() {
-        // A mayor frecuencia (sube 15% por nivel), antes se alcanza el umbral y mas seguido dispara
+        // A mas frecuencia, antes llega al umbral y dispara mas seguido
         acumuladorDisparo += frecuenciaDisparo;
         if (acumuladorDisparo >= UMBRAL_DISPARO) {
             acumuladorDisparo -= UMBRAL_DISPARO;

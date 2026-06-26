@@ -9,7 +9,7 @@ public class Escuadron {
     private int dronesLanzados = 0;
 
     public boolean puedeLanzarSiguienteDron() {
-        // No mas de 4 simultaneos y mientras queden drones del escuadron por enviar
+        // Max 4 a la vez y mientras queden por enviar
         return dronesActivos.size() < MAXIMOS_ACTIVOS && dronesLanzados < TOTAL_DRONES;
     }
 
@@ -27,7 +27,7 @@ public class Escuadron {
     }
 
     public boolean escuadronTerminado() {
-        // Se enviaron los 10 drones y ninguno sigue en vuelo
+        // Enviados los 10 y ninguno en vuelo
         return dronesLanzados >= TOTAL_DRONES && dronesActivos.isEmpty();
     }
 }

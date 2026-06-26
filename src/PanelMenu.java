@@ -8,16 +8,16 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
-// Pantalla de inicio: titulo del juego y boton para comenzar.
+// Pantalla de inicio: titulo y boton para comenzar.
 public class PanelMenu extends JPanel {
 
     private static final Color AMARILLO = new Color(255, 232, 31);
 
-    // Recibe que hacer cuando se aprieta "Comenzar" (lo decide la ventana, no el menu).
+    // Recibe que hacer al apretar "Comenzar"
     public PanelMenu(Runnable alComenzar) {
         setPreferredSize(new Dimension(PanelJuego.ANCHO, PanelJuego.ALTO));
         setBackground(Color.BLACK);
-        setLayout(new GridBagLayout()); // centra los componentes vertical y horizontalmente
+        setLayout(new GridBagLayout()); // centra los componentes
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -33,7 +33,7 @@ public class PanelMenu extends JPanel {
         botonComenzar.setFont(new Font("Arial", Font.PLAIN, 24));
         botonComenzar.setBackground(AMARILLO);
         botonComenzar.setForeground(Color.BLACK);
-        botonComenzar.setOpaque(true);          // necesario para que se vea el color de fondo
+        botonComenzar.setOpaque(true);          // para que se vea el color de fondo
         botonComenzar.setBorderPainted(false);
         botonComenzar.setFocusPainted(false);
         botonComenzar.addActionListener(e -> alComenzar.run());

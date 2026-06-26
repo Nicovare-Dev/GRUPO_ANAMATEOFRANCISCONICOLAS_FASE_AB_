@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Controlador {
     private Juego juego;
 
@@ -9,6 +11,7 @@ public class Controlador {
     public void moverAvion(Direccion dir)   { juego.getAvion().mover(dir); }
     public void cambiarAltitud(float alt)   { juego.getAvion().cambiarAltitud(alt); }
     public void avanzarNivel()              { juego.avanzarNivel(); }
+    public void reiniciar()                 { juego = new Juego(1000f); }
 
     public float getAvionPosicion() { return juego.getAvion().getPosicion(); }
     public float getAvionAltitud()  { return juego.getAvion().getAltitud(); }
@@ -20,4 +23,9 @@ public class Controlador {
     public int getNivelActual()   { return juego.getNivel().getNumero(); }
     public int getDronesActivos() { return juego.dronesActivos(); }
     public boolean finDelJuego()  { return juego.finDelJuego(); }
+
+    // Para que la vista dibuje cada entidad
+    public List<Dron> getDrones()           { return juego.getDrones(); }
+    public List<Misil> getMisiles()         { return juego.getMisiles(); }
+    public List<Explosion> getExplosiones() { return juego.getExplosiones(); }
 }

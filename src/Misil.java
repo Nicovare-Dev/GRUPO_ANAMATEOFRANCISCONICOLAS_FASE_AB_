@@ -2,7 +2,7 @@ public class Misil extends EntidadVoladora {
     private float altitudDetonacion;
 
     public Misil(float altitudInicial, float velocidadCaida, float posicion) {
-        super(posicion, velocidadCaida, altitudInicial); // posicion horizontal del dron que lo lanzo (cae en linea recta)
+        super(posicion, velocidadCaida, altitudInicial); // cae recto desde la posicion del dron
         this.altitudDetonacion = 1200f + (float)(Math.random() * (4500f - 1200f));
     }
 
@@ -17,11 +17,13 @@ public class Misil extends EntidadVoladora {
     }
 
     public Explosion explotar() {
-        // El misil explota en su posicion horizontal y a la altitud de detonacion
+        // Explota en su posicion y a la altitud de detonacion
         return new Explosion(posicion, altitudDetonacion);
     }
 
-    public void procesarExplosion(Avion avion, Jugador jugador) {
+    // Aplica daño segun la distancia (en pixeles) y devuelve la explosion para dibujarla.
+    // Tramos: >150 seguro, 80-150 leve, 20-80 fuerte, <20 pierde una vida.
+    public Explosion procesarExplosion(Avion avion, Jugador jugador) {
         Explosion explosion = explotar();
         float distancia = explosion.calcularDistancia(avion);
 
@@ -35,5 +37,6 @@ public class Misil extends EntidadVoladora {
         } else {
             jugador.perderVida();
         }
+        return explosion;
     }
 }
